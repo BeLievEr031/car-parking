@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useAuth } from "@clerk/clerk-react";
+import Button from "../Button";
 
 function Navbar() {
     const { signOut } = useAuth();
@@ -24,7 +25,7 @@ function Navbar() {
                     <Link to="/" className={`${isActive("/")} hover:text-blue-600`}>Home</Link>
                     <Link to="/book-slot" className={`${isActive("/book-slot")} hover:text-blue-600`}>Book a Slot</Link><Link to="/booked-slot" className={`${isActive("/booked-slot")} block hover:text-blue-600`} onClick={() => setIsOpen(false)}>Booked Slots</Link>
                     {/* <Link to="/contact" className={`${isActive("/contact")} hover:text-blue-600`}>Contact</Link> */}
-                    <Link to="/login" className="bg-blue-600 text-white px-4 py-2 rounded">Logout</Link>
+                    <Button className="text-white bg-red-500 px-4 py-2 rounded text-center" onClick={() => signOut()}>Logout</Button>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -40,7 +41,8 @@ function Navbar() {
                     <Link to="/book-slot" className={`${isActive("/book-slot")} block hover:text-blue-600`} onClick={() => setIsOpen(false)}>Book a Slot</Link>
                     <Link to="/booked-slot" className={`${isActive("/booked-slot")} block hover:text-blue-600`} onClick={() => setIsOpen(false)}>Booked Slots</Link>
                     <Link to="/contact" className={`${isActive("/contact")} block hover:text-blue-600`} onClick={() => setIsOpen(false)}>Contact</Link>
-                    <Link to="/login" className="block bg-blue-600 text-white px-4 py-2 rounded text-center" onClick={() => signOut()}>Logout</Link>
+
+                    <Button className="text-white bg-red-500 px-4 py-2 rounded text-center" onClick={() => signOut()}>Logout</Button>
                 </div>
             )}
         </nav>
