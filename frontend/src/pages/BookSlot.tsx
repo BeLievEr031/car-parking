@@ -7,6 +7,7 @@ import { searchParkingSlot } from "../http/api";
 import toast from "react-hot-toast";
 import { useBookingSlotMutation } from "../hook/useBookingSlot";
 import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 
 // const parkingLots: IParkingLot[] = [
 //     {
@@ -55,6 +56,7 @@ export interface BookSlotData {
 }
 
 function BookSlot() {
+    const navigate = useNavigate();
     const { mutate } = useBookingSlotMutation();
     const { user } = useUser();
     const [bookSlot, setBookSlot] = useState<boolean>(false)
@@ -84,7 +86,6 @@ function BookSlot() {
     const handleSearchSlot = async (address: string, pinCode: string, newDate: string) => {
         try {
             const data = await searchParkingSlot({ address, pinCode });
-            console.log(data.data.data.slots);
 
             const formattedData = data.data.data.slots.map((slot: IParkingLot) => ({
                 _id: slot._id,
@@ -100,11 +101,11 @@ function BookSlot() {
                     lng: slot.location!.coordinates[1],
                 },
             }));
-            console.log(formattedData);
 
             setParkingLots(formattedData)
             setDate(newDate)
             toast.success("Search successful!");
+
         } catch (error) {
             console.log(error);
         }
@@ -130,6 +131,10 @@ function BookSlot() {
             amount: bookSlotData!.amount! * +data.totalHours! * +data.totalSlots!,
             paymentStatus: "Pending"
         })
+
+        setTimeout(() => {
+            navigate("/booked-slot")
+        }, 1500)
 
         setBookSlot(false)
     }

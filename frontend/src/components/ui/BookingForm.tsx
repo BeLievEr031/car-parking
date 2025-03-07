@@ -32,7 +32,6 @@ const BookingForm: React.FC<BookingFormProps> = ({ bookSlotData, onSubmit, onClo
             toast.error("Please enter your name.");
             return;
         }
-
         onSubmit(formData);
     };
 

@@ -55,34 +55,14 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Testimonials */}
-            <section className="py-16 bg-gray-100">
-                <div className="container mx-auto text-center">
-                    <h2 className="text-3xl font-bold text-gray-800">What Our Users Say</h2>
-                    <div className="mt-10 grid md:grid-cols-3 gap-6">
-                        <div className="p-6 bg-white shadow-md rounded-lg">
-                            <p className="text-gray-700">"Super easy to book parking! Saved so much time and hassle."</p>
-                            <h4 className="text-blue-600 font-bold mt-4">- John D.</h4>
-                        </div>
-                        <div className="p-6 bg-white shadow-md rounded-lg">
-                            <p className="text-gray-700">"Great experience! The process was seamless and efficient."</p>
-                            <h4 className="text-blue-600 font-bold mt-4">- Sarah W.</h4>
-                        </div>
-                        <div className="p-6 bg-white shadow-md rounded-lg">
-                            <p className="text-gray-700">"Best parking app! Found a slot within minutes. Highly recommend!"</p>
-                            <h4 className="text-blue-600 font-bold mt-4">- Mark T.</h4>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* Call to Action */}
             <section className="py-16 bg-blue-600 text-white text-center">
                 <h2 className="text-3xl font-bold">Ready to Park Easily?</h2>
                 <p className="mt-4 text-lg">Find a parking spot in seconds. Book now!</p>
-                <button className="mt-6 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200">
+                {/* <button className="mt-6 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200">
                     Get Started
-                </button>
+                </button> */}
             </section>
 
             {/* Footer */}

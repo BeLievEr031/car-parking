@@ -70,8 +70,6 @@ const BookedSlotsCard: React.FC<Props> = ({ bookedSlots }) => {
     const handlePayment = async (data: { _id: string, id: string }) => {
         try {
 
-            console.log(data);
-
             const isLoaded = await loadRazorpayScript();
             if (!isLoaded) {
                 alert("Failed to load Razorpay. Please try again.");
@@ -89,7 +87,6 @@ const BookedSlotsCard: React.FC<Props> = ({ bookedSlots }) => {
                 description: "Test Transaction",
                 order_id: order.id,
                 handler: async () => {
-                    console.log(data);
                     mutate({ _id: data.id, paymentStatus: "Paid" });
                     refetch();
                     alert("Payment successful!");
