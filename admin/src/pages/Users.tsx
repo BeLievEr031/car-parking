@@ -9,8 +9,6 @@ function Users() {
         const fetchUsers = async () => {
             try {
                 const response = await axios.get("http://localhost:5000/fetch-users");
-
-                console.log(response.data);
                 const mappedUsers = response.data.map((user: ResponseUserHistory) => ({
                     firstName: user.first_name,
                     lastName: user.last_name,
