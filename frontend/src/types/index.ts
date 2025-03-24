@@ -36,6 +36,7 @@ export interface IPagination {
 export interface SearchBookingSlot {
     address: string;
     pinCode: string;
+    date: string;
 }
 
 export interface ILocation {

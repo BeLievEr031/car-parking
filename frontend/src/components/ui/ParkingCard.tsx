@@ -11,6 +11,7 @@ export interface IParkingLot {
     address: string;
     totalSlots: number;
     availableSlots: number;
+    totalSlotsSum: number;
     hourlyRate: string;
     paymentMethods: string;
     status: "Active" | "Inactive";
@@ -30,7 +31,7 @@ interface IProp {
 }
 
 const ParkingCard: React.FC<IProp> = ({ parkingLots, openBookingForm, openViewForm }) => {
-    // console.log(parkingLots);
+    console.log(parkingLots);
 
     return (
         <div className="max-w-4xl mx-auto p-4">
@@ -73,8 +74,7 @@ const ParkingCard: React.FC<IProp> = ({ parkingLots, openBookingForm, openViewFo
                             <Button
                                 className="bg-blue-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-600 mt-3"
                                 onClick={() => {
-                                    console.log(lot.hourlyRate);
-                                    openBookingForm(true, { id: lot._id!, amount: +lot.hourlyRate })
+                                    openBookingForm(true, { id: lot._id!, amount: +lot.hourlyRate, totalSlots: +lot.totalSlots, availableSlots: +lot.availableSlots })
                                 }}
                             >
                                 Book
@@ -97,8 +97,9 @@ const ParkingCard: React.FC<IProp> = ({ parkingLots, openBookingForm, openViewFo
                         </div>
                     </div>
                 </div>
-            ))}
-        </div>
+            ))
+            }
+        </div >
     );
 };
 

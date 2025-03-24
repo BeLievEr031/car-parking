@@ -210,7 +210,7 @@ class BookingController {
 
             const slot = await ParkingSlot.findById({ _id: updatedBooking?.id })
 
-            slot!.totalSlots += updatedBooking!.totalSlots
+            slot!.availableSlots += updatedBooking!.totalSlots
 
             await slot?.save();
 

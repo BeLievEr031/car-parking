@@ -91,8 +91,9 @@ class ParkingSlotController {
 
             const address = req.query.address;
             const pinCode = req.query.pinCode
+            const date = req.query.date;
 
-            const result = await this.parkingSlotService.searchSlot(address, pinCode);
+            const result = await this.parkingSlotService.searchSlot(address, pinCode, date);
             res.status(HTTP_STATUS.OK).json({
                 success: true,
                 message: "Parking slots fetched successfully.",

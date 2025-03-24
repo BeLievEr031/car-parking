@@ -9,7 +9,7 @@ export const fetchParkingSlot = (pagination: IPagination) => api.get(`/car-parki
 
 export const deleteParkingSlot = (id: string) => api.delete(`/car-parking-slot/delete/${id}`)
 
-export const searchParkingSlot = (query: SearchBookingSlot) => api.get(`/car-parking-slot/search-slot?address=${query.address}&pinCode=${query.pinCode}`)
+export const searchParkingSlot = (query: SearchBookingSlot) => api.get(`/car-parking-slot/search-slot?address=${query.address}&pinCode=${query.pinCode}&date=${query.date}`)
 
 export const createBooking = (data: BookSlotData) => api.post('/car-booking-slot/create', data)
 

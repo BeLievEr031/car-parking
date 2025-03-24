@@ -52,7 +52,7 @@ const ParkingMap = () => {
     // ]);
     const { user } = useUser();
     const [pagination] = useState<IPagination>({
-        clerkId: user!.id,
+        clerkId: user ? user!.id : "",
         limit: 25,
         order: "asc",
         page: 1,

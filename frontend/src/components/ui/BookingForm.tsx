@@ -28,10 +28,21 @@ const BookingForm: React.FC<BookingFormProps> = ({ bookSlotData, onSubmit, onClo
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log(454654654654);
         if (formData.name.trim() === "") {
             toast.error("Please enter your name.");
             return;
         }
+
+        console.log(+bookSlotData.totalSlots! < +formData.totalSlots);
+        console.log(+bookSlotData.totalSlots!);
+
+
+        if (+bookSlotData.totalSlots! < +formData.totalSlots) {
+            toast.error("Not have enough slots for booking please select less slots.");
+            return;
+        }
+
         onSubmit(formData);
     };
 

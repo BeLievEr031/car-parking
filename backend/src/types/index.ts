@@ -41,6 +41,7 @@ export interface SearchParkingSlotRequest extends Request {
     query: {
         address: string;
         pinCode: string;
+        date: string;
     }
 }
 

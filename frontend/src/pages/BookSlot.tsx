@@ -53,6 +53,7 @@ export interface BookSlotData {
     date?: string;
     amount?: number;
     paymentStatus?: string;
+    availableSlots?: number;
 }
 
 function BookSlot() {
@@ -85,14 +86,14 @@ function BookSlot() {
 
     const handleSearchSlot = async (address: string, pinCode: string, newDate: string) => {
         try {
-            const data = await searchParkingSlot({ address, pinCode });
+            const data = await searchParkingSlot({ address, pinCode, date: newDate });
 
             const formattedData = data.data.data.slots.map((slot: IParkingLot) => ({
                 _id: slot._id,
                 name: slot.name,
                 address: slot.address,
                 totalSlots: slot.totalSlots,
-                availableSlots: slot.availableSlots,
+                availableSlots: slot.totalSlotsSum ? slot.totalSlots - slot.totalSlotsSum : slot.totalSlots,
                 hourlyRate: slot.hourlyRate, // Adding currency sign
                 pinCode: slot.pinCode,
                 status: slot.status,
@@ -140,7 +141,7 @@ function BookSlot() {
     }
 
     return (
-        <div>
+        <div className="">
             <SearchBar handleSearchSlot={handleSearchSlot} />
             <ParkingCard parkingLots={parkingLots} openViewForm={openViewForm} openBookingForm={openBookingForm} />
 
